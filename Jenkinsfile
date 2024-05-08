@@ -22,5 +22,12 @@ pipeline {
                 sh 'terraform plan'
             }
         }
+        stage('Terraform Apply') {
+            steps {
+                
+                def userInput = input(id: 'confirm', message: 'Apply Terraform?', parameters: [ [$class: 'BooleanParameterDefinition', defaultValue: false, description: 'Apply terraform', name: 'confirm'] ])    
+                // sh 'terraform apply'
+            }
+        }
     }
 }
